@@ -2,8 +2,9 @@ cmake_minimum_required (VERSION 2.8)
 
 project (Bar)
 
-set (FOOCompileTools_DIR ${CMAKE_CURRENT_SOURCE_DIR})
-find_package (FOOCompileTools NO_MODULE REQUIRED)
+add_executable (fooConfigureMain IMPORTED)
+set_target_properties(fooConfigureMain PROPERTIES IMPORTED_LOCATION "${CMAKE_CURRENT_SOURCE_DIR}/configure.py")
+set_target_properties(fooConfigureMain PROPERTIES CROSSCOMPILING_EMULATOR "/usr/bin/python")
 
 message (STATUS "CMAKE_CROSSCOMPILING=${CMAKE_CROSSCOMPILING}")
 
